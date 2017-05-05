@@ -19,7 +19,7 @@
 文件关闭函数(fclose函数):将缓冲区内的数据写入文件中，并释放系统所提供的文件资源
     函数原型: int fclose(FILE *fp)
     参数说明: fp-->文件指针
-    返回值说明: 文件正常关闭时，fclose() 的返回值为0，如果返回非零值则表示有错误发生
+    返回值说明: 文件正常关闭时，fclose() 的返回值为0，否则有错误发生时则返回EOF并把错误代码存到errno
     备注: 文件一旦使用完毕，应该用fclose()函数把文件关闭，以释放相关资源，避免数据丢失
 
 文件打开方式由r、w、a、t、b、+ 六个字符拼成，各字符的含义是:
@@ -116,6 +116,9 @@ ftell函数(取得文件流的读取位置):
     函数原型：long ftell(FILE * stream);
     返回参数说明：当调用成功时则返回目前的读写位置，若有错误则返回-1
 
+clearerr函数(清除文件流的错误旗标):
+    函数原型：void clearerr(FILE * stream);
+
 setbuf函数(设置文件流的缓冲区):
     函数原型：void setbuf(FILE * stream,char * buf);
     函数说明：在打开文件流后，读取内容之前，调用setbuf()可以用来设置文件流的缓冲区
@@ -130,3 +133,5 @@ rewind函数(重设文件流的读写位置为文件开头):
     函数原型：void rewind(FILE * stream);
     函数说明：把文件流的读写位置移至文件开头
     备注：此函数相当于调用fseek(stream,0,SEEK_SET)
+
+参考链接：http://www.cnblogs.com/likebeta/archive/2012/06/16/2551780.html
