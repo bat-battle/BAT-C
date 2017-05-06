@@ -15,9 +15,13 @@ typedef struct stack
 } Stack;
 
 char pop(Stack *stack);
+
 void push(Stack *stack, char ch);
+
 int isEmpty(Stack *stack);
+
 char peek(Stack *stack);
+
 Stack *init();
 
 #endif
