@@ -1,5 +1,5 @@
 /*************************************************************************
-	> File Name: test.c
+	> File Name: calculator.c
 	> Author: 
 	> Mail: 
 	> Created Time: 2017年04月03日 星期一 16时02分15秒
@@ -10,24 +10,9 @@
 #include<stdlib.h>
 #include"stack.h"
 
-int getLevel(char op);
-int compareOP(char op1, char op2);
-char *converter(char *str);
-int calculator(char *str);
+static int getLevel(char op);
+static int compareOP(char op1, char op2);
 
-int main()
-{
-    char *str = "9 + (5 - 2) * 4";//中缀
-    char *temp = converter(str);
-    puts(temp);
-
-    int result = calculator(temp);
-
-    printf("result is: %d\n", result);
-
-    free(temp);
-    return 0;
-}
 
 int calculator(char *str)
 {
@@ -117,12 +102,12 @@ char *converter(char *str)
     return temp;
 }
 
-int compareOP(char op1, char op2)
+static int compareOP(char op1, char op2)
 {
     return getLevel(op1) - getLevel(op2);
 }
 
-int getLevel(char op)
+static int getLevel(char op)
 {
     if('+' == op || '-' == op)
     {
